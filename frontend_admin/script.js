@@ -60,14 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     editButton.addEventListener('click', () => {
-        if (selectedProductId) {
+        const productId = prompt('Введите ID товара для редактирования:');
+        if (productId) {
             const updatedProduct = {
                 name: prompt('Введите новое название товара:'),
                 price: parseFloat(prompt('Введите новую цену товара:')),
                 description: prompt('Введите новое описание товара:'),
                 category: prompt('Введите новую категорию товара:')
             };
-            fetch(`/products/${selectedProductId}`, {
+            fetch(`/products/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -80,13 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Ошибка:', error));
         } else {
-            alert('Выберите товар для редактирования.');
+            alert('Введите корректный ID товара.');
         }
     });
 
     deleteButton.addEventListener('click', () => {
-        if (selectedProductId) {
-            fetch(`/products/${selectedProductId}`, {
+        const productId = prompt('Введите ID товара для удаления:');
+        if (productId) {
+            fetch(`/products/${productId}`, {
                 method: 'DELETE'
             })
             .then(() => {
@@ -94,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Ошибка:', error));
         } else {
-            alert('Выберите товар для удаления.');
+            alert('Введите корректный ID товара.');
         }
     });
 

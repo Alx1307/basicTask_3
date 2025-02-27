@@ -1,17 +1,10 @@
 [
   {
-    "id": 2,
-    "name": "Товар 2",
-    "price": 1111,
-    "description": "Неплохой товар",
-    "category": "1"
-  },
-  {
     "id": 3,
-    "name": "Товар 3",
-    "price": 10000,
-    "description": "Просто товар",
-    "category": "1"
+    "name": "Товар 2",
+    "price": 0,
+    "description": "",
+    "category": "2"
   },
   {
     "id": 4,
@@ -36,5 +29,19 @@
     "description": "Новый товар",
     "category": "1",
     "id": 6
+  },
+  {
+    "name": "Товар 7",
+    "price": 230,
+    "description": "",
+    "category": "3",
+    "id": 7
+  },
+  {
+    "name": "Товар 8",
+    "price": 45,
+    "description": "",
+    "category": "2",
+    "id": 8
   }
 ]
