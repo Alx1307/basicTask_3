@@ -1,0 +1,31 @@
+header {
+    text-align: center;
+    padding: 10px;
+}
+main {
+    padding: 10px;
+}
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.product-card {
+    border: 4px solid #7d6567;
+    border-radius: 8px;
+    padding: 20px;
+}
+.button1 {
+    font-size: 18px;
+    border-radius: 10px;
+    border-color: #7d6567;
+    color: #7d6567;
+    height: 40px;
+    width: 400px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+  }

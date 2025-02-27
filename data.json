@@ -1,0 +1,40 @@
+[
+  {
+    "id": 2,
+    "name": "Товар 2",
+    "price": 1111,
+    "description": "Неплохой товар",
+    "category": "1"
+  },
+  {
+    "id": 3,
+    "name": "Товар 3",
+    "price": 10000,
+    "description": "Просто товар",
+    "category": "1"
+  },
+  {
+    "id": 4,
+    "name": "Товар 4",
+    "price": 400,
+    "description": "Описание",
+    "category": "2"
+  },
+  {
+    "id": 5,
+    "name": "Товар 5",
+    "price": 10,
+    "description": "Описание товара 5",
+    "category": [
+      "1",
+      "2"
+    ]
+  },
+  {
+    "name": "Товар 6",
+    "price": 3,
+    "description": "Новый товар",
+    "category": "1",
+    "id": 6
+  }
+]
