@@ -102,3 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadProducts();
 });
+
+function openChat() {
+    window.open("localhost:9000/chat.html");
+  }
