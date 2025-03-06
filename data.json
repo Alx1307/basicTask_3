@@ -18,10 +18,7 @@
     "name": "Товар 5",
     "price": 10,
     "description": "Описание товара 5",
-    "category": [
-      "1",
-      "2"
-    ]
+    "category": "2"
   },
   {
     "name": "Товар 6",

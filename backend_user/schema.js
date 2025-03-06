@@ -11,6 +11,7 @@ const typeDefs = gql`
     name: String
     price: Float
     description: String
+    category: String
   }
 
   type Query {
@@ -26,10 +27,12 @@ const resolvers = {
     productsWithPrice: () => products.map(product => ({
       name: product.name,
       price: product.price,
+      category: product.category,
     })),
     productsWithDescription: () => products.map(product => ({
       name: product.name,
       description: product.description,
+      category: product.category,
     })),
   },
 };
