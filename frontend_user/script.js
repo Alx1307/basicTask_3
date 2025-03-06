@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let products = [];
-
-  const fetchProducts = () => {
-    fetch('http://localhost:8080/products')
-      .then(response => response.json())
-      .then(data => {
-        products = data;
-        displayProducts(products);
-      })
-      .catch(error => console.error('Ошибка:', error));
+  const fetchProducts = async (query) => {
+    const response = await fetch('http://localhost:8080/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query }),
+    });
+    const { data } = await response.json();
+    return data;
   };
 
   const displayProducts = (productsToDisplay) => {
@@ -19,25 +19,28 @@ document.addEventListener('DOMContentLoaded', () => {
       productDiv.classList.add('product-card');
       productDiv.innerHTML = `
         <h2>${product.name}</h2>
-        <p>Цена: $${product.price}</p>
-        <p>Описание: ${product.description}</p>
-        <p>Категория: ${Array.isArray(product.category) ? product.category.join(', ') : product.category}</p>
+        ${product.price !== undefined ? `<p>Цена: $${product.price}</p>` : ''}
+        ${product.description !== undefined ? `<p>Описание: ${product.description}</p>` : ''}
       `;
       productList.appendChild(productDiv);
     });
   };
 
-  const sortProductsByCategory = () => {
-    const sortedProducts = [...products].sort((a, b) => {
-      const categoryA = Array.isArray(a.category) ? a.category.join(', ') : a.category;
-      const categoryB = Array.isArray(b.category) ? b.category.join(', ') : b.category;
-      return categoryA.localeCompare(categoryB);
-    });
-    displayProducts(sortedProducts);
+  const handleDisplayChange = async () => {
+    const displayMode = document.getElementById('displaySelect').value;
+    let query = '';
+    if (displayMode === 'title-price') {
+      query = `{ productsWithPrice { name price } }`;
+    } else if (displayMode === 'title-description') {
+      query = `{ productsWithDescription { name description } }`;
+    }
+    const data = await fetchProducts(query);
+    const products = displayMode === 'title-price' ? data.productsWithPrice : data.productsWithDescription;
+    displayProducts(products);
   };
 
-  const sortButton = document.querySelector('.button1');
-  sortButton.addEventListener('click', sortProductsByCategory);
+  document.getElementById('displaySelect').addEventListener('change', handleDisplayChange);
 
-  fetchProducts();
+  // Initial load
+  handleDisplayChange();
 });

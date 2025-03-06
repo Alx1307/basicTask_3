@@ -1,11 +1,12 @@
-const { buildSchema } = require('graphql');
+// schema.js
+const { gql } = require('apollo-server');
 const fs = require('fs');
 const path = require('path');
 
 const dataFilePath = path.join(__dirname, '..', 'data.json');
 const products = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
 
-const schema = buildSchema(`
+const typeDefs = gql`
   type Product {
     name: String
     price: Float
@@ -14,15 +15,23 @@ const schema = buildSchema(`
 
   type Query {
     products: [Product]
+    productsWithPrice: [Product]
+    productsWithDescription: [Product]
   }
-`);
+`;
 
-const root = {
-  products: () => products.map(product => ({
-    name: product.name,
-    price: product.price,
-    description: product.description
-  }))
+const resolvers = {
+  Query: {
+    products: () => products,
+    productsWithPrice: () => products.map(product => ({
+      name: product.name,
+      price: product.price,
+    })),
+    productsWithDescription: () => products.map(product => ({
+      name: product.name,
+      description: product.description,
+    })),
+  },
 };
 
-module.exports = { schema, root };
+module.exports = { typeDefs, resolvers };
