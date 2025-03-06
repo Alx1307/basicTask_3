@@ -41,7 +41,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fetchProducts();
 });
-
-function openChat() {
-  window.open("http://localhost:9000/frontend_user/chat.html");
-}

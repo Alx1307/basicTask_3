@@ -17,9 +17,21 @@
 
         <div class="button-container">
             <button class="button1">Сортировать по категориям</button>
-            <button class="button1" onclick="openChat()">Чат поддержки</button>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Чат поддержки</h3>
+            </div>
+            <div class="chat-body" id="textArea">
+            </div>
+            <div class="chat-input">
+                <input id="messageArea" type="text" size="24" placeholder="Введите сообщение">
+                <input type="submit" value="Отправить" onclick="sendMessage()">
+            </div>
         </div>
     </main>
     <script src = "script.js"></script>
+    <script src="chat_script.js"></script>
 </body>
 </html>

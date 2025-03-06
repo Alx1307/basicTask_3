@@ -1,9 +1,18 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
 header {
     text-align: center;
     padding: 10px;
 }
 main {
     padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 #product-list {
     display: flex;
@@ -30,3 +39,43 @@ main {
     align-items: center;
     height: 10vh;
   }
+  .chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.chat-header {
+    background-color: #7d6567;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.chat-body {
+    padding: 10px;
+    height: 250px;
+    overflow-y: auto;
+}
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+.chat-input input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+}
+.chat-input input[type="submit"] {
+    padding: 10px;
+    background-color: #7d6567;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
